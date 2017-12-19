@@ -1,0 +1,16 @@
+{
+  "name": "answers-api",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "copperkraft",
+  "main": "server.js",
+  "license": "ICS",
+  "scripts": {
+    "start": "node server.js",
+    "tslint": ""
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "sequelize": "^4.28.6"
+  }
+}
