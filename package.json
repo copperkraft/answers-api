@@ -3,14 +3,23 @@
   "version": "1.0.0",
   "description": "Node.js on Docker",
   "author": "copperkraft",
-  "main": "server.js",
-  "license": "ICS",
+  "main": "server/app.js",
+  "license": "MIT",
+  "repository": "https://github.com/copperkraft/answers-api",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/app",
+    "start.dev": "cross-env NODE_ENV=development node server/app",
+    "docker.build": "docker build ./ -t answers-api",
+    "docker.local": "docker run --net=host -it answers-api",
     "tslint": ""
   },
   "dependencies": {
+    "config": "^1.28.1",
     "express": "^4.16.1",
+    "pg": "^7.4.0",
     "sequelize": "^4.28.6"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1"
   }
 }
