@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const dbConnection = require('./data/db-connetction');
+const data = require('./data');
 
 const PORT = process.env['PORT'] || 8001;
 const HOST = '0.0.0.0';
