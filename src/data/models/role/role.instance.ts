@@ -1,4 +1,4 @@
-import { UserAttribute } from '../user/user.attribute';
+import { UserAttribute } from '../user';
 import { RoleAttribute } from './role.attribute';
 
 import {

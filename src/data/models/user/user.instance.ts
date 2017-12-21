@@ -1,5 +1,5 @@
 import { UserAttribute } from './user.attribute';
-import { RoleAttribute } from '../role/role.attribute';
+import { RoleAttribute } from '../role';
 
 import {
     BelongsToGetAssociationMixin, 

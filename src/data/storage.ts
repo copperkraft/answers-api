@@ -1,24 +1,28 @@
 import * as Sequelize from 'sequelize';
-import { UserModel } from '../models/user/user.model';
-import { RoleModel } from '../models/role/role.model';
-import { SequelizeStorageConfig } from './storage-config';
-import { UserInstance } from '../models/user/user.instance';
-import { UserAttribute } from '../models/user/user.attribute';
-import { UserAttributes } from '../models/user/user.attributes';
-import { RoleInstance } from '../models/role/role.instance';
-import { RoleAttribute } from '../models/role/role.attribute';
-import { RoleAttributes } from '../models/role/role.attributes';
+
+import {
+    UserAttribute, 
+    UserAttributes,
+    UserInstance,
+    UserModel
+} from './models/user';
+
+import {
+    RoleAttribute, 
+    RoleAttributes, 
+    RoleInstance,
+    RoleModel
+} from './models/role';
+
 
 export interface StorageManager {
-    init(force?:boolean):Promise<any>;
+    init(force?:boolean): Promise<any>;
 }
 
 export class SequelizeStorageManager {
     public sequelize: Sequelize.Sequelize;
     public userModel: UserModel;
     public roleModel: RoleModel;
-    
-    private config: SequelizeStorageConfig;
 
     constructor() {
         this.sequelize = new Sequelize('postgresql://postgres:123456@localhost/answers', { dialect: "postgres" });
