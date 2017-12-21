@@ -7,13 +7,15 @@
   "license": "MIT",
   "repository": "https://github.com/copperkraft/answers-api",
   "scripts": {
-    "start": "node server/app",
-    "start.dev": "cross-env NODE_ENV=development node server/app",
+    "start": "node build/app",
     "docker.build": "docker build ./ -t answers-api",
-    "docker.local": "docker run --net=host -it answers-api",
+    "docker.local": "docker run -p 3001:3001 -it answers-api",
     "tslint": ""
   },
   "dependencies": {
+    "@types/config": "0.0.33",
+    "@types/express": "^4.11.0",
+    "@types/sequelize": "^4.0.80",
     "config": "^1.28.1",
     "express": "^4.16.1",
     "pg": "^7.4.0",

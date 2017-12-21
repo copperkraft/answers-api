@@ -1,5 +1,6 @@
 {
   "databaseUrl": "DATABASE_URL",
   "port": "PORT",
+  "host": "HOST",
   "usingSsl": "SSL"
 }

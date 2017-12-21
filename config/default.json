@@ -1,5 +1,6 @@
 {
   "databaseUrl": "postgresql://postgres:123456@localhost/answers",
   "port": 3001,
+  "host": "0.0.0.0",
   "usingSsl": false
 }
