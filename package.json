@@ -8,6 +8,7 @@
   "repository": "https://github.com/copperkraft/answers-api",
   "scripts": {
     "start": "node build/app",
+    "build": "ntsc",
     "docker.build": "docker build ./ -t answers-api",
     "docker.local": "docker run -p 3001:3001 -it answers-api",
     "tslint": ""
