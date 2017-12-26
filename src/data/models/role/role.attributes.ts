@@ -1,13 +1,13 @@
 import * as Sequelize from 'sequelize';
 
 export const RoleAttributes = {
-    "id": {
-        "type": Sequelize.UUID,
-        "allowNull": false,
-        "primaryKey": true
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     },
-    "name": {
-        "type": Sequelize.STRING(128),
-        "allowNull": false
+    name: {
+        type: Sequelize.STRING(128),
+        allowNull: false
     }
 };

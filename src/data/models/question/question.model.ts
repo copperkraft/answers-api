@@ -7,19 +7,11 @@ import { RoleAttributes } from '../role';
 export class QuestionModel extends DataModel<QuestionInstance, QuestionAttribute> {
     model: Sequelize.Model<QuestionInstance, QuestionAttribute>;
     constructor() {
-        super(
-            'User',
-            RoleAttributes,
-            {
-                "tableName": "users",
-                "timestamps": true,
-                "createdAt": "created_at",
-                "updatedAt": "updated_at",
-            }
-        );
+        super('Question', RoleAttributes);
     }
 
     associate(models: {[key: string]: DataModel<any, any>}) {
         this.model.belongsTo(models['User'].model);
+        this.model.hasMany(models['Answer'].model);
     }
 }

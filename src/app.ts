@@ -21,10 +21,10 @@ app.listen(PORT, HOST, () => {
 const models: AnswersAppSchema = {
     'User': new UserModel(),
     'Role': new RoleModel(),
-    'Question': new QuestionModel()
+    'Question': new QuestionModel(),
+    'Answer': new QuestionModel()
 };
 
-const storage: DataStorage<AnswersAppSchema> = new DataStorage(models,'postgresql://postgres:123456@localhost/answers','postgres');
+const storage = new DataStorage<AnswersAppSchema>(models,'postgresql://postgres:123456@localhost/answers','postgres');
 
 storage.init(true);
-
