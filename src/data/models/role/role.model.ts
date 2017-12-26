@@ -7,16 +7,7 @@ import { RoleAttributes } from './role.attributes';
 export class RoleModel extends DataModel<RoleInstance, RoleAttribute> { 
     model: Sequelize.Model<RoleInstance, RoleAttribute>;
     constructor() {
-        super(
-            'Role',
-            RoleAttributes,
-            {
-                "tableName": "roles",
-                "timestamps": true,
-                "createdAt": "created_at",
-                "updatedAt": "updated_at",
-            }
-        );
+        super('Role', RoleAttributes);
     }
 
     associate(models: {[key: string]: DataModel<any, any>}) {

@@ -1,4 +1,4 @@
-import { UserAttribute } from './user.attribute';
+import { QuestionAttribute } from './question.attribute';
 import { RoleAttribute } from '../role';
 
 import {
@@ -7,8 +7,7 @@ import {
     Instance
 } from 'sequelize';
 
-export interface UserInstance extends Instance<UserAttribute>, UserAttribute {
+export interface QuestionInstance extends Instance<QuestionAttribute>, QuestionAttribute {
     getRole: BelongsToGetAssociationMixin<RoleAttribute>;
     setRole: BelongsToSetAssociationMixin<RoleAttribute, string>;
-    
 }

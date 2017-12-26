@@ -1,4 +1,5 @@
 import * as Sequelize from 'sequelize';
+import { DataSchema } from './data-schema';
 
 export abstract class DataModel<Instance, Attribute> {
     model: Sequelize.Model<Instance, Attribute>;
@@ -16,5 +17,5 @@ export abstract class DataModel<Instance, Attribute> {
             this.tableOptions
         );
     }
-    abstract associate(models: {[key: string]: DataModel<any, any>}): void;
+    abstract associate(models: DataSchema): void;
 }
