@@ -1,4 +1,4 @@
 export interface RoleAttribute {
-    id?:number;
-    name?:string;
+    id?: number;
+    name?: string;
 }

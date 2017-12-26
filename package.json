@@ -19,7 +19,9 @@
     "@types/sequelize": "^4.0.80",
     "config": "^1.28.1",
     "express": "^4.16.1",
+    "inversify": "^4.9.0",
     "pg": "^7.4.0",
+    "reflect-metadata": "^0.1.10",
     "sequelize": "^4.28.6"
   },
   "devDependencies": {

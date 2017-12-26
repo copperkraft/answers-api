@@ -1,13 +1,8 @@
 import { AnswerAttribute } from './answer.attribute';
-import { RoleAttribute } from '../role';
 
-import {
-    BelongsToGetAssociationMixin, 
-    BelongsToSetAssociationMixin,
-    Instance
-} from 'sequelize';
+import * as Sequelize from 'sequelize';
 
-export interface AnswerInstance extends Instance<AnswerAttribute>, AnswerAttribute {
-    getRole: BelongsToGetAssociationMixin<RoleAttribute>;
-    setRole: BelongsToSetAssociationMixin<RoleAttribute, string>;
+
+export interface AnswerInstance extends Sequelize.Instance<AnswerAttribute>, AnswerAttribute {
+
 }
