@@ -3,8 +3,8 @@ import * as config from "config";
 import { DataStorage } from './data/helpers/data-storage';
 import { UserModel } from './data/models/user';
 import { QuestionModel } from './data/models/question';
-import { RoleModel } from './data/models/role';
 import { AnswersAppSchema } from './data/schema';
+import { TagModel } from './data/models/tag';
 
 const PORT = parseInt(config.get('port'),10) || 3001;
 const HOST = config.get('host').toString();
@@ -19,12 +19,14 @@ app.listen(PORT, HOST, () => {
 });
 
 const models: AnswersAppSchema = {
-    'User': new UserModel(),
-    'Role': new RoleModel(),
-    'Question': new QuestionModel(),
-    'Answer': new QuestionModel()
+    User: new UserModel(),
+    Question: new QuestionModel(),
+    Answer: new QuestionModel(),
+    Tag: new TagModel()
 };
 
 const storage = new DataStorage<AnswersAppSchema>(models,'postgresql://postgres:123456@localhost/answers','postgres');
 
-storage.init(true);
+storage.init(true).then(async () => {
+    console.log("connected");
+});

@@ -14,7 +14,6 @@ export class UserModel extends DataModel<UserInstance, UserAttribute> {
     }
 
     associate(models: {[key: string]: DataModel<any, any>}) {
-        this.model.belongsTo(models['Role'].model);
         this.model.hasMany(models['Question'].model);
         this.model.hasMany(models['Answer'].model);
     }

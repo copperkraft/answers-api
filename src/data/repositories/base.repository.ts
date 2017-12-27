@@ -3,25 +3,25 @@ import { DataSchema } from '../helpers/data-schema';
 import {
     AggregateOptions,
     AnyWhereOptions, BulkCreateOptions, CountOptions,
-    CreateOptions
+    CreateOptions, FindOptions
 } from 'sequelize';
 
-export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribute>, Attribute> {
+export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribute>, Attribute, Schema extends DataSchema> {
     constructor(
-        private model: Sequelize.Model<Instance, Attribute>,
-        private schema: DataSchema
+        protected model: Sequelize.Model<Instance, Attribute>,
+        protected schema: Schema
     ) { }
     
     async getById(id: number): Promise<Attribute> {
         return await this.model.findById(id).then(value => value.toJSON())
     }
 
-    async findAll(options: Attribute): Promise<Attribute[]> {
+    async findAll(options: FindOptions<Attribute>): Promise<Attribute[]> {
         const models = await this.model.findAll(options);
         return models.map(model => model.toJSON());
     }
 
-    async findOne(options: Attribute): Promise<Attribute> {
+    async findOne(options: FindOptions<Attribute>): Promise<Attribute> {
         const model = await this.model.findOne(options);
         return model.toJSON();
     }
@@ -47,7 +47,7 @@ export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribu
         return await this.model.destroy(where);
     }
 
-    async create(info: Attribute, options: CreateOptions): Promise<Attribute> {
+    async create(info: Attribute, options?: CreateOptions): Promise<Attribute> {
         const newModel = await this.model.create(info, options);
         return newModel.toJSON();
     }
@@ -56,7 +56,7 @@ export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribu
         return this.model.count(info);
     }
 
-    async bulkCreate(records: Attribute[], options: BulkCreateOptions): Promise<Attribute[]> {
+    async bulkCreate(records: Attribute[], options?: BulkCreateOptions): Promise<Attribute[]> {
         const self = this;
         const fullOpts: BulkCreateOptions = Object.assign({
             returning: true,
@@ -67,11 +67,11 @@ export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribu
         return createdModels.map(value => value.toJSON());
     }
 
-    async min(field: string, opts: AggregateOptions): Promise<Attribute> {
+    async min(field: string, opts?: AggregateOptions): Promise<Attribute> {
         return this.model.min(field, opts);
     }
 
-    async max(field: string, opts: AggregateOptions): Promise<Attribute> {
+    async max(field: string, opts?: AggregateOptions): Promise<Attribute> {
         return this.model.max(field, opts);
     }
 }
