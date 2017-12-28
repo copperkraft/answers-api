@@ -9,4 +9,13 @@ export interface AnswersAppSchema extends DataSchema {
     Tag: TagModel,
     Question: QuestionModel,
     Answer: AnswerModel
+} 
+
+export class AnswersAppSchema implements AnswersAppSchema {
+    constructor() {
+        this.User = new UserModel();
+        this.Tag = new TagModel();
+        this.Question = new QuestionModel();
+        this.Answer = new AnswerModel();
+    }
 }

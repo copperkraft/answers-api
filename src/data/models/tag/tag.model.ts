@@ -11,7 +11,6 @@ export class TagModel extends DataModel<TagInstance, TagAttribute> {
     }
 
     associate(models: {[key: string]: DataModel<any, any>}) {
-        this.model.belongsToMany(models['Question'].model, {through: 'TagQuestion'});
-        this.model.belongsTo(models['Question'].model)
+        // this.model.belongsToMany(models['Question'].model, {through: 'TagQuestion'});
     }
 }

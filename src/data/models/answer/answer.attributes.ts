@@ -1,10 +1,10 @@
 import * as Sequelize from 'sequelize';
 
 export const AnswerAttributes = {
-    'id': {
-        'type': Sequelize.UUID,
-        'allowNull': false,
-        'primaryKey': true
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     },
     'name': {
         'type': Sequelize.STRING(128),

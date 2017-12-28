@@ -1,19 +1,21 @@
 import * as Sequelize from 'sequelize';
-import { DataSchema } from '../helpers/data-schema';
+import { DataSchema } from '../../helpers/data-schema';
 import {
     AggregateOptions,
     AnyWhereOptions, BulkCreateOptions, CountOptions,
     CreateOptions, FindOptions
 } from 'sequelize';
+import { BaseRepository } from '../interfaces/base.repository';
 
-export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribute>, Attribute, Schema extends DataSchema> {
+export abstract class BaseSequelizeRepository<Instance extends Sequelize.Instance<Attribute>, Attribute, Schema extends DataSchema> implements BaseRepository<Attribute>{
     constructor(
         protected model: Sequelize.Model<Instance, Attribute>,
         protected schema: Schema
     ) { }
     
-    async getById(id: number): Promise<Attribute> {
-        return await this.model.findById(id).then(value => value.toJSON())
+    async getById(id: number): Promise<Attribute|null> {
+        const model = await this.model.findById(id);
+        return model ? model.toJSON() : null;
     }
 
     async findAll(options: FindOptions<Attribute>): Promise<Attribute[]> {
@@ -21,9 +23,9 @@ export abstract class BaseRepository<Instance extends Sequelize.Instance<Attribu
         return models.map(model => model.toJSON());
     }
 
-    async findOne(options: FindOptions<Attribute>): Promise<Attribute> {
+    async findOne(options: FindOptions<Attribute>): Promise<Attribute|null> {
         const model = await this.model.findOne(options);
-        return model.toJSON();
+        return model ? model.toJSON() : null;
     }
 
     async update(info: Attribute, where: AnyWhereOptions): Promise<Attribute[]> {

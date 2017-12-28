@@ -13,6 +13,6 @@ export class QuestionModel extends DataModel<QuestionInstance, QuestionAttribute
     associate(models: {[key: string]: DataModel<any, any>}) {
         this.model.belongsTo(models['User'].model);
         this.model.hasMany(models['Answer'].model);
-        this.model.belongsToMany(models['Tag'].model, {through: 'TagQuestion'});
+        // this.model.belongsToMany(models['Tag'].model, {through: 'TagQuestion'});
     }
 }

@@ -3,16 +3,18 @@
     "target": "es6",
     "module": "commonjs",
     "noResolve": false,
+    "baseUrl": "src", // This must be specified if "paths" is.
     "types": ["reflect-metadata"],
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitOnError": true,
-    "noImplicitAny": true,
+    "strict": true,
     "declaration": true,
     "sourceMap": true,
     "sourceRoot": "src",
-    "outDir": "build"
+    "outDir": "build",
+    "pretty": true
   },
   "exclude": [
     "build",
