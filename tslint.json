@@ -117,6 +117,6 @@
     "unified-signatures": true,
     "use-isnan": true,
     "variable-name": false,
-    "whitespace": [true, "check-branch", "check-decl", "check-module", "check-operator", "check-separator", "check-type", "check-typecast", "check-preblock"],
+    "whitespace": [true, "check-branch", "check-decl", "check-module", "check-operator", "check-separator", "check-type", "check-typecast", "check-preblock"]
   }
 }
