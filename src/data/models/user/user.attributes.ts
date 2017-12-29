@@ -10,6 +10,10 @@ export const UserAttributes = {
         type: Sequelize.STRING(128),
         allowNull: false
     },
+    salt: {
+        type: Sequelize.STRING(128),
+        allowNull: false
+    },
     email: {
         type: Sequelize.STRING(128),
         allowNull: false,

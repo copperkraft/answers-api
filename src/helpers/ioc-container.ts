@@ -1,5 +1,5 @@
 import { Container } from 'inversify';
-import "reflect-metadata";
+import 'reflect-metadata';
 
 const iocContainer = new Container();
 

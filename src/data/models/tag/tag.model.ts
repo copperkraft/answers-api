@@ -1,4 +1,4 @@
-import * as Sequelize from "sequelize";
+import * as Sequelize from 'sequelize';
 import { TagInstance } from './tag.instance';
 import { TagAttribute } from './tag.attribute';
 import { DataModel } from '../../helpers/data-model';

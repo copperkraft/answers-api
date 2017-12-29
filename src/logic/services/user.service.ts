@@ -1,6 +1,6 @@
-import {UserRepository} from '../../data/repositories/interfaces/user.repository';
-import {inject, injectable} from 'inversify';
-import {UserAttribute} from '../../data/models/user';
+import { UserRepository } from '../../data/repositories/interfaces/user.repository';
+import { inject, injectable } from 'inversify';
+import { UserAttribute } from '../../data/models/user';
 
 @injectable()
 export class UserService {

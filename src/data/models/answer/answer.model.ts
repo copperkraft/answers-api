@@ -1,4 +1,4 @@
-import * as Sequelize from "sequelize";
+import * as Sequelize from 'sequelize';
 import { AnswerInstance } from './answer.instance';
 import { AnswerAttribute } from './answer.attribute';
 import { DataModel } from '../../helpers/data-model';

@@ -9,20 +9,20 @@ export class DataStorage<Schema extends DataSchema> {
         databaseUrl: string, 
         dialect: string = 'postgres'
     ) {
-        this.sequelize = new Sequelize(databaseUrl, { dialect: dialect });
+        this.sequelize = new Sequelize(databaseUrl, { dialect });
         Object.keys(this.models)
             .map((key: string) => models[key])
             .map(model => {
                 model.connect(this.sequelize);
                 return model;
             })
-            .forEach(model => model.associate(models))
+            .forEach(model => model.associate(models));
     }
     
     async init(force?: boolean): Promise<any> {
         force = force || false;
         console.log('connecting to database');
         
-        return await this.sequelize.sync({force: force, logging: true});
+        return await this.sequelize.sync({force, logging: true});
     }
 }

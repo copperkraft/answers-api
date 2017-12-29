@@ -7,15 +7,20 @@ import {
 } from 'sequelize';
 import { BaseRepository } from '../interfaces/base.repository';
 
-export abstract class BaseSequelizeRepository<Instance extends Sequelize.Instance<Attribute>, Attribute, Schema extends DataSchema> implements BaseRepository<Attribute>{
+export abstract class BaseSequelizeRepository<Instance 
+    extends Sequelize.Instance<Attribute>, Attribute, Schema extends DataSchema> 
+    implements BaseRepository<Attribute> {
     constructor(
         protected model: Sequelize.Model<Instance, Attribute>,
         protected schema: Schema
     ) { }
     
-    async getById(id: number): Promise<Attribute|null> {
+    async getById(id: number): Promise<Attribute> {
         const model = await this.model.findById(id);
-        return model ? model.toJSON() : null;
+        if (model) {
+            return model.toJSON();
+        }
+        throw new Error('invalid id');
     }
 
     async findAll(options?: FindOptions<Attribute>): Promise<Attribute[]> {
@@ -59,7 +64,6 @@ export abstract class BaseSequelizeRepository<Instance extends Sequelize.Instanc
     }
 
     async bulkCreate(records: Attribute[], options?: BulkCreateOptions): Promise<Attribute[]> {
-        const self = this;
         const fullOpts: BulkCreateOptions = Object.assign({
             returning: true,
             validate: true

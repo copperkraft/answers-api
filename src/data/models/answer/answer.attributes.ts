@@ -6,8 +6,8 @@ export const AnswerAttributes = {
         primaryKey: true,
         autoIncrement: true
     },
-    'name': {
-        'type': Sequelize.STRING(128),
-        'allowNull': false
+    text: {
+        type: Sequelize.STRING(128),
+        allowNull: false
     }
 };

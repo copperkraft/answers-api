@@ -6,8 +6,8 @@ export const VoteAttributes = {
         primaryKey: true,
         autoIncrement: true
     },
-    'positive': {
-        'type': Sequelize.BOOLEAN,
-        'allowNull': false
+    positive: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     }
 };

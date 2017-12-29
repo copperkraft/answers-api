@@ -6,11 +6,11 @@ import { AnswerModel } from './models/answer';
 import { TagModel } from './models/tag';
 
 export interface AnswersAppSchema extends DataSchema {
-    User: UserModel,
-    Tag: TagModel,
-    Question: QuestionModel,
-    Answer: AnswerModel,
-    Vote: VoteModel
+    User: UserModel;
+    Tag: TagModel;
+    Question: QuestionModel;
+    Answer: AnswerModel;
+    Vote: VoteModel;
 } 
 
 export class AnswersAppSchema implements AnswersAppSchema {

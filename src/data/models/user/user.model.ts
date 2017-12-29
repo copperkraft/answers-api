@@ -1,4 +1,4 @@
-import * as Sequelize from "sequelize";
+import * as Sequelize from 'sequelize';
 import { UserInstance } from './user.instance';
 import { UserAttribute } from './user.attribute';
 import { DataModel } from '../../helpers/data-model';

@@ -6,8 +6,8 @@ export const TagAttributes = {
         primaryKey: true,
         autoIncrement: true
     },
-    'title': {
-        'type': Sequelize.STRING(128),
-        'allowNull': false
+    title: {
+        type: Sequelize.STRING(128),
+        allowNull: false
     }
 };

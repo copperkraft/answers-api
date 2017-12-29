@@ -1,4 +1,4 @@
-import * as crypto from "crypto";
+import * as crypto from 'crypto';
 
 export namespace Encryption {
     export function encrypt(password: string, salt: string): string {
