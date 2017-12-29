@@ -18,7 +18,7 @@ export abstract class BaseSequelizeRepository<Instance extends Sequelize.Instanc
         return model ? model.toJSON() : null;
     }
 
-    async findAll(options: FindOptions<Attribute>): Promise<Attribute[]> {
+    async findAll(options?: FindOptions<Attribute>): Promise<Attribute[]> {
         const models = await this.model.findAll(options);
         return models.map(model => model.toJSON());
     }

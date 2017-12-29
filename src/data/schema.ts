@@ -1,4 +1,5 @@
 import { DataSchema } from './helpers/data-schema';
+import { VoteModel } from './models/vote';
 import { UserModel } from './models/user';
 import { QuestionModel } from './models/question';
 import { AnswerModel } from './models/answer';
@@ -8,7 +9,8 @@ export interface AnswersAppSchema extends DataSchema {
     User: UserModel,
     Tag: TagModel,
     Question: QuestionModel,
-    Answer: AnswerModel
+    Answer: AnswerModel,
+    Vote: VoteModel
 } 
 
 export class AnswersAppSchema implements AnswersAppSchema {
@@ -17,5 +19,6 @@ export class AnswersAppSchema implements AnswersAppSchema {
         this.Tag = new TagModel();
         this.Question = new QuestionModel();
         this.Answer = new AnswerModel();
+        this.Vote = new VoteModel();
     }
 }
