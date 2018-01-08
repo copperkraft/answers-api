@@ -1,9 +1,9 @@
 import {
     AggregateOptions,
-    AnyWhereOptions, 
-    BulkCreateOptions, 
+    AnyWhereOptions,
+    BulkCreateOptions,
     CountOptions,
-    CreateOptions, 
+    CreateOptions,
     FindOptions
 } from 'sequelize';
 
@@ -13,7 +13,7 @@ export interface BaseRepository<Attribute> {
     findOne(options: FindOptions<Attribute>): Promise<any|null>;
     update(info: Attribute, where: AnyWhereOptions): Promise<any[]>;
     updateById(info: Attribute, id: number): Promise<any>;
-    remove(where: AnyWhereOptions): Promise<number>; 
+    remove(where: AnyWhereOptions): Promise<number>;
     create(info: Attribute, options?: CreateOptions): Promise<any>;
     count(info: CountOptions): Promise<number>;
     bulkCreate(records: Attribute[], options?: BulkCreateOptions): Promise<any[]>;

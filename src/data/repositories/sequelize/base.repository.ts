@@ -50,8 +50,9 @@ export abstract class BaseSequelizeRepository<Instance
         return updateResult[0];
     }
 
-    async remove(where: AnyWhereOptions): Promise<number> {
-        return await this.model.destroy(where);
+    async remove(where: AnyWhereOptions = {}, options?: AnyWhereOptions): Promise<number> {
+        const fullOptions = Object.assign({where}, options);
+        return await this.model.destroy(fullOptions);
     }
 
     async create(info: Attribute, options?: CreateOptions): Promise<Attribute> {

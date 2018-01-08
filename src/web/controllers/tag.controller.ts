@@ -22,4 +22,15 @@ export class TagController {
     async create(req: Request, res: Response): Promise<void> {
         res.send(JSON.stringify(await this.tagService.create(req.body)));
     }
+    
+    async deleteById(req: Request, res: Response): Promise<void> {
+        const id = +req.params['id'];
+        if (id) {
+            console.log(id);
+            await this.tagService.deleteById(id);
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+        }
+    }
 }

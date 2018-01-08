@@ -18,8 +18,12 @@ export class TagService {
         return new Tag(await this.tagRepository.findOne({where: {title: name}}));
     }
     
-    async create(tag: Tag) {
+    async create(tag: Tag): Promise<Tag> {
         return new Tag(await this.tagRepository.create(tag));
+    }
+
+    async deleteById(id: number): Promise<number> {
+        return this.tagRepository.remove({id});
     }
     
     async generateTags(): Promise<void> {
