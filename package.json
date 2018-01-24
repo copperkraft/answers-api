@@ -11,17 +11,20 @@
     "build": "ntsc",
     "docker.build": "docker build ./ -t answers-api",
     "docker.local": "docker run -p 3001:3001 -it answers-api",
+    "docker.alt": "docker run --net=host -it answers-api",
     "tslint": "tslint  --project tsconfig.json src/**/*"
   },
   "dependencies": {
     "@types/body-parser": "^1.16.8",
     "@types/config": "0.0.33",
     "@types/express": "^4.11.0",
+    "@types/jsonwebtoken": "^7.2.5",
     "@types/sequelize": "^4.0.80",
     "body-parser": "^1.18.2",
     "config": "^1.28.1",
     "express": "^4.16.1",
     "inversify": "^4.9.0",
+    "jsonwebtoken": "^8.1.0",
     "pg": "^7.4.0",
     "reflect-metadata": "^0.1.10",
     "sequelize": "^4.28.6"

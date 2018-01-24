@@ -2,11 +2,16 @@ import { UserRepository } from '../../data/repositories/interfaces/user.reposito
 import { inject, injectable } from 'inversify';
 import { UserAttribute } from '../../data/models/user';
 import { Encryption } from '../../helpers/encryption-helper';
+import { Tag } from '../models/tag';
 import { User } from '../models/user';
 
 @injectable()
 export class UserService {
     constructor(@inject('UserRepository') private userRepository: UserRepository) { }
+    
+    async getById(id: number) {
+        return new User(await this.userRepository.getById(id));
+    }
     
     async authorize(credentials: {email: string, password: string}): Promise<UserAttribute> {
         const user = await this.userRepository.findOne({
