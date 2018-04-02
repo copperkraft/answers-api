@@ -2,7 +2,7 @@ import { Answer } from './answer';
 import { Question } from './question';
 
 export class User {
-    id: number;
+    id?: number;
     name: string;
     email: string;
     questions?: Question[];

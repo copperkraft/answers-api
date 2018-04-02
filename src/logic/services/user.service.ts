@@ -2,6 +2,7 @@ import { UserRepository } from '../../data/repositories/interfaces/user.reposito
 import { inject, injectable } from 'inversify';
 import { UserAttribute } from '../../data/models/user';
 import { Encryption } from '../../helpers/encryption-helper';
+import { errorConstants } from '../../helpers/error-constants';
 import { Tag } from '../models/tag';
 import { User } from '../models/user';
 
@@ -23,10 +24,10 @@ export class UserService {
             if (Encryption.check(credentials.password, user.salt, user.password)) {
                 return new User(user);
             } else {
-                throw new Error('wrong password');
+                throw new Error(errorConstants.invalidCredentials);
             }
         } else {
-            throw new Error('wrong email');
+            throw new Error(errorConstants.invalidCredentials);
         }
     }
     
@@ -41,7 +42,7 @@ export class UserService {
         if (user) {
             return new User(user);
         } else {
-            throw new Error('unable to create user');
+            throw new Error('Unable to create user');
         }
     }
 }

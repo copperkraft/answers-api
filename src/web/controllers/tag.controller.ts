@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify';
+import { getIdFromParams } from '../../helpers/user-id-getter';
 import { TagService } from '../../logic/services/tag.service';
 import { Request, Response } from 'express';
 
@@ -11,12 +12,8 @@ export class TagController {
     }
     
     async getById(req: Request, res: Response): Promise<void> {
-        const id = +req.params['id'];
-        if (id) {
-            res.send(JSON.stringify(await this.tagService.getById(id)));
-        } else {
-            res.sendStatus(404);
-        }
+        const id = getIdFromParams(req);
+        res.send(JSON.stringify(await this.tagService.getById(id)));
     }
     
     async create(req: Request, res: Response): Promise<void> {
@@ -24,13 +21,8 @@ export class TagController {
     }
     
     async deleteById(req: Request, res: Response): Promise<void> {
-        const id = +req.params['id'];
-        if (id) {
-            console.log(id);
-            await this.tagService.deleteById(id);
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(404);
-        }
+        const id = getIdFromParams(req);
+        await this.tagService.deleteById(id);
+        res.sendStatus(200);
     }
 }

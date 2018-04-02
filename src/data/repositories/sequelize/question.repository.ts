@@ -8,11 +8,10 @@ import { QuestionAttribute, QuestionInstance } from 'data/models/question';
 export class QuestionSequelizeRepository 
     extends BaseSequelizeRepository<QuestionInstance, QuestionAttribute, AnswersAppSchema> 
     implements QuestionRepository {
-    async getById(id: number): Promise<any> {
-        const question = await this.model.findById(id);
-        if (question) {
-            return question;
-        }
-        throw new Error('invalid id');
+
+    async createByUser(info: QuestionAttribute, userId: number): Promise<any> {
+        const newModel = await this.model.create(info);
+        await newModel.setUser(userId);
+        return newModel.toJSON();
     }
 }

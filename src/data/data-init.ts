@@ -9,7 +9,7 @@ export const dataInit = async (container: Container) => {
 
     const storage = new DataStorage<AnswersAppSchema>(models, config.get('databaseUrl'), 'postgres');
     
-    await storage.init(true);
+    await storage.init(false);
     
     bindRepositories(container, storage);
 };

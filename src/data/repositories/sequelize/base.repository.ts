@@ -1,9 +1,10 @@
 import * as Sequelize from 'sequelize';
+import { errorConstants } from '../../../helpers/error-constants';
 import { DataSchema } from '../../helpers/data-schema';
 import {
     AggregateOptions,
     AnyWhereOptions, BulkCreateOptions, CountOptions,
-    CreateOptions, FindOptions
+    CreateOptions, FindOptions, WhereOptions
 } from 'sequelize';
 import { BaseRepository } from '../interfaces/base.repository';
 
@@ -20,7 +21,7 @@ export abstract class BaseSequelizeRepository<Instance
         if (model) {
             return model.toJSON();
         }
-        throw new Error('invalid id');
+        throw new Error(errorConstants.invalidId);
     }
 
     async findAll(options?: FindOptions<Attribute>): Promise<Attribute[]> {
@@ -55,7 +56,7 @@ export abstract class BaseSequelizeRepository<Instance
         return await this.model.destroy(fullOptions);
     }
 
-    async create(info: Attribute, options?: CreateOptions): Promise<Attribute> {
+    async create(info: Attribute, options?: CreateOptions, userId?: number): Promise<Attribute> {
         const newModel = await this.model.create(info, options);
         return newModel.toJSON();
     }

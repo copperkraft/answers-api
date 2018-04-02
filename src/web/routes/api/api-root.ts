@@ -1,4 +1,5 @@
 import { Application } from 'express';
+import { registerQuestionRoutes } from './question-routes';
 import { registerTagRoutes } from './tag-routes';
 import { registerUserRoutes } from './user-routes';
 
@@ -9,4 +10,5 @@ export function registerApiRoutes(app: Application, baseRoute: string) {
 
     registerUserRoutes(app, baseRoute + '/user');
     registerTagRoutes(app, baseRoute + '/tag');
+    registerQuestionRoutes(app, baseRoute + '/question');
 }

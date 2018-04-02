@@ -16,10 +16,8 @@ const app = express();
 
 const init = async () => {
     await dataInit(iocContainer);
-    logicInit(iocContainer);
+    await logicInit(iocContainer);
     webInit(iocContainer, app);
-    const tagService = iocContainer.get<TagService>('TagService');
-    await tagService.generateTags();
 };
 
 init().then(() => {

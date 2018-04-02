@@ -3,7 +3,7 @@ import { Tag } from './tag';
 import { User } from './user';
 
 export class Question {
-    id: number;
+    id?: number;
     title: string;
     text: string;
     tags?: Tag[];

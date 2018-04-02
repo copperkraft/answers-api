@@ -1,7 +1,7 @@
 import { Question } from './question';
 
 export class Tag {
-    id: number;
+    id?: number;
     title: string;
     questions?: Question[];
     createdAt: Date;

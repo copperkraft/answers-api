@@ -1,4 +1,5 @@
 import { FindOptions } from 'sequelize';
+import { errorConstants } from '../../../helpers/error-constants';
 import { TagRepository } from '../interfaces/tag.repository';
 import { BaseSequelizeRepository } from './base.repository';
 import { AnswersAppSchema } from '../../schema';
@@ -17,7 +18,7 @@ export class TagSequelizeRepository extends BaseSequelizeRepository<TagInstance,
         if (model) {
             return model.toJSON();
         }
-        throw new Error('invalid id');
+        throw new Error(errorConstants.invalidId);
     }
     async findOne(options: FindOptions<TagAttribute>): Promise<any> {
         const model = await this.model.findOne(Object.assign({
@@ -29,6 +30,6 @@ export class TagSequelizeRepository extends BaseSequelizeRepository<TagInstance,
         if (model) {
             return model.toJSON();
         }
-        throw new Error('invalid id');
+        throw new Error(errorConstants.invalidId);
     }
 }

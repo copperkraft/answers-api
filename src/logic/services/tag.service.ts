@@ -25,12 +25,4 @@ export class TagService {
     async deleteById(id: number): Promise<number> {
         return this.tagRepository.remove({id});
     }
-    
-    async generateTags(): Promise<void> {
-        return void await Promise.all(
-        ['angular', 'react', 'vue', 'typescript'].map((tag: string) => {
-            return this.tagRepository.create({title: tag});
-        })
-        );
-    }
 }

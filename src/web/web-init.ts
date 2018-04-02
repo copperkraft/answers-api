@@ -1,8 +1,8 @@
-import * as express from 'express';
 import { Application } from 'express';
 import { Container } from 'inversify';
 import bodyParser = require('body-parser');
 import { iocControllersBinder } from './controllers/ioc-controllers-binder';
+import { errorHandler } from './middlware/error-handler';
 import { registerRoutes } from './routes/root';
 
 export function webInit(container: Container, app: Application): void {
@@ -14,10 +14,5 @@ export function webInit(container: Container, app: Application): void {
     iocControllersBinder(container);
     registerRoutes(app);
     
-    app.use((err: Error, req: express.Request, res: express.Response, next: () => any) => {
-        if (err) {
-            console.error(err.stack);
-            res.status(500).send('Something broke!');
-        }
-    });
+    app.use(errorHandler);
 }

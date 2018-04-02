@@ -4,7 +4,7 @@ import {
     BulkCreateOptions,
     CountOptions,
     CreateOptions,
-    FindOptions
+    FindOptions, WhereOptions
 } from 'sequelize';
 
 export interface BaseRepository<Attribute> {    

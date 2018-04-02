@@ -6,7 +6,7 @@ export const QuestionAttributes = {
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    title: {
         type: Sequelize.STRING(128),
         allowNull: false
     }
