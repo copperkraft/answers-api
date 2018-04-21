@@ -7,7 +7,8 @@ export class TagService {
     constructor(@inject('TagRepository') private tagRepository: TagRepository) { }
     
     async getTags(): Promise<Tag[]> {
-        return await this.tagRepository.findAll();
+        const tags = await this.tagRepository.findAll();
+        return tags.map(tag => new Tag(tag));
     }
     
     async getById(id: number): Promise<Tag> {

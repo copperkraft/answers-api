@@ -11,11 +11,12 @@ export class Question {
     author?: User;
 
     constructor(data: any) {
+        console.log(data);
         this.id = data.id;
         this.title = data.title;
         this.text = data.text;
-        this.tags = data.tags && data.tags.map((tag: any) => new Tag(tag));
-        this.answers = data.answers && data.answers.map((answer: any) => new Answer(answer));
-        this.author = data.author && new User(data.author);
+        this.tags = data.Tags && data.Tags.map((tag: any) => new Tag(tag));
+        this.answers = data.Answers && data.Answers.map((answer: any) => new Answer(answer));
+        this.author = data.User && new User(data.User);
     }
 }

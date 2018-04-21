@@ -16,7 +16,8 @@ export class QuestionController {
     }
     
     async create(req: Request, res: Response): Promise<void> {
-        const newPost = await this.service.create({title: 'title', text: 'text'}, res.locals.userId);
+        console.log(res.locals.userId);
+        const newPost = await this.service.create(req.body, res.locals.userId, req.body.tags);
         res.send(JSON.stringify(newPost));
     }
     

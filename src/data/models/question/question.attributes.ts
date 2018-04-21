@@ -9,5 +9,9 @@ export const QuestionAttributes = {
     title: {
         type: Sequelize.STRING(128),
         allowNull: false
+    },
+    text: {
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 };

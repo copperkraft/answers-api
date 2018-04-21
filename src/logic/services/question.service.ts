@@ -20,17 +20,21 @@ export class QuestionService {
     }
     
     async getById(id: number): Promise<QuestionAttribute|null> {
-        return this.questionRepository.getById(id);
+        return new Question(
+            await this.questionRepository.getById(id)
+        );
     }
     
-    async create(question: Question, userId: number): Promise<Question> {
-        return await this.questionRepository.createByUser(Object.assign(question), userId);
+    async create(question: Question, userId: number, tags: number[]): Promise<Question> {
+        return new Question(
+            await this.questionRepository.createQuestion(Object.assign(question), userId, tags)
+        );
     }
     
     async update(question: Question, id: number, userId: number): Promise<Question> {
         const updatedItem = head(await this.questionRepository.update(question, {id, userId}));
         if (updatedItem) {
-            return updatedItem;
+            return new Question(updatedItem);
         } else {
             throw new Error(errorConstants.unauthorized);
         }
