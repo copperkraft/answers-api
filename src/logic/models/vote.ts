@@ -3,7 +3,7 @@ import { User } from './user';
 
 export class VoteAttribute {
     id?: number;
-    isPositive: boolean;
+    isPositive: boolean = false;
     question?: Question;
     user?: User;
 }

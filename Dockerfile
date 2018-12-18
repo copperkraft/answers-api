@@ -14,5 +14,6 @@ RUN npm build
 # Bundle app source
 COPY build build
 COPY config config
+COPY keys keys
 
 CMD [ "npm", "start" ]

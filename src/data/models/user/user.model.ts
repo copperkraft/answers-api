@@ -1,11 +1,9 @@
-import * as Sequelize from 'sequelize';
 import { UserInstance } from './user.instance';
 import { UserAttribute } from './user.attribute';
 import { DataModel } from '../../helpers/data-model';
 import { UserAttributes } from './user.attributes';
 
 export class UserModel extends DataModel<UserInstance, UserAttribute> {
-    model: Sequelize.Model<UserInstance, UserAttribute>;
     constructor() {
         super(
             'User',

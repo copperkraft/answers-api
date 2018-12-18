@@ -1,11 +1,9 @@
-import * as Sequelize from 'sequelize';
 import { QuestionInstance } from './question.instance';
 import { QuestionAttribute } from './question.attribute';
 import { DataModel } from '../../helpers/data-model';
 import { QuestionAttributes } from './question.attributes';
 
 export class QuestionModel extends DataModel<QuestionInstance, QuestionAttribute> {
-    model: Sequelize.Model<QuestionInstance, QuestionAttribute>;
     constructor() {
         super('Question', QuestionAttributes);
     }
